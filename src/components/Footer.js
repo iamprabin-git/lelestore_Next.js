@@ -7,6 +7,7 @@ import UsefulLinks from '@/constants/usefulLinks'
 import Link from 'next/link'
 import React, { use } from 'react'
 import SocialsLinks from '@/constants/socials'
+import SocialIcons from './Social'
 
 function Footer() {
   return (
@@ -25,13 +26,7 @@ function Footer() {
        
           <h4 className="mb-6 text-sm font-medium text-gray-900 dark:text-white">Welcome to Lele Sasto Gharjagga Karobar Kendra, your premier destination for all things real estate in the heart of Lalitpur. Whether you're looking to buy, sell, or rent property, our company offers a seamless, user-friendly experience that connects buyers directly with sellers, ensuring a transparent and efficient transaction process. Lele Sasto Gharjagga Karobar Kendra is a renowned and leading real estate brokerage agency in lele, Lalitpur we give you the best deals possible.</h4>
           <ul className="text-gray-500 dark:text-gray-400 font-medium">
-            {
-              SocialsLinks.map((SocialsLink, socialindex) => (
-                <li className="mb-4" key={socialindex}>
-                  <Link href={SocialsLink.route} className="hover:underline">{SocialsLink.label}</Link>
-                </li>
-              ))
-            }
+          <SocialIcons/>
           </ul>
         </div>
         <div>
@@ -105,7 +100,7 @@ function Footer() {
   )
 }
 
-export default Footer
+export default Footer;
 
 
 
