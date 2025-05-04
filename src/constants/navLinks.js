@@ -24,11 +24,7 @@ const navLinks = [
     label: "Agents",
     isAuth: false,
   },
-  {
-    route: "/about",
-    label: "About",
-    isAuth: false,
-  },
+ 
   {
     route: "/contact",
     label: "Contact",
@@ -38,6 +34,16 @@ const navLinks = [
     route: "/company",
     label: "Company",
     isAuth: false,
+    submenu: [
+      {
+        route: "/about",
+        label: "About Us",
+      },
+      {
+        route: "/team",
+        label: "Our Team",
+      },
+    ],
   },
 ];
 export default navLinks;
