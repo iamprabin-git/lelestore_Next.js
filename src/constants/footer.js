@@ -1,22 +1,22 @@
 const footerLinks = [
     {
-        route: "/",
-        label: "Home",
-    },
-    {
-        route: "/properties",
-        label: "Properties",
+        route: "/about",
+        label: "About Us",
     },
     {
         route: "/agents",
-        label: "Agents",
+        label: "Become an Agent ",
     },
     {
-        route: "/about",
-        label: "About",
+        route: "/careers",
+        label: "Careeres",
     },
+    
     {
         route: "/contact",
         label: "Contact",
     },
+
   ];
+  
+  export default footerLinks;

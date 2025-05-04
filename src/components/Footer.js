@@ -1,17 +1,50 @@
 "use client"
-
+import Image from 'next/image'
+import logo from '../assets/images/logo-3.png'
+import BrowseLinks from '@/constants/browse'
+import footerLinks from '@/constants/footer'
+import UsefulLinks from '@/constants/usefulLinks'
 import Link from 'next/link'
-import React from 'react'
+import React, { use } from 'react'
+import SocialsLinks from '@/constants/socials'
 
 function Footer() {
   return (
     <footer className="bg-white dark:bg-gray-900">
     <div className="mx-auto w-full shadow dark:bg-gray-800 md:max-w-screen-xl">
       <div className="grid grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4">
-        <div>
-          <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Lele Sasto GharJagga Karobar Kendra</h2>
+
+      <div>
+        <div className="mb-8 flex text-lg items-center">
+           <Image src={logo}
+            height={150}
+            width={150} 
+            className="h-15 w-auto" alt=" Logo" />
+            <h1>Lele Sasto Gharjagga Karobar Kendra</h1>
+            </div>
+       
+          <h4 className="mb-6 text-sm font-medium text-gray-900 dark:text-white">Welcome to Lele Sasto Gharjagga Karobar Kendra, your premier destination for all things real estate in the heart of Lalitpur. Whether you're looking to buy, sell, or rent property, our company offers a seamless, user-friendly experience that connects buyers directly with sellers, ensuring a transparent and efficient transaction process. Lele Sasto Gharjagga Karobar Kendra is a renowned and leading real estate brokerage agency in lele, Lalitpur we give you the best deals possible.</h4>
           <ul className="text-gray-500 dark:text-gray-400 font-medium">
-            <li className="mb-4">
+            {
+              SocialsLinks.map((SocialsLink, socialindex) => (
+                <li className="mb-4" key={socialindex}>
+                  <Link href={SocialsLink.route} className="hover:underline">{SocialsLink.label}</Link>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+        <div>
+          <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Company</h2>
+          <ul className="text-gray-500 dark:text-gray-400 font-medium">
+            {
+              footerLinks.map((footerLink, i) => (
+                <li className="mb-4" key={i}>
+                  <Link href={footerLink.route} className="hover:underline">{footerLink.label}</Link>
+                </li>
+              ))
+            }
+            {/* <li className="mb-4">
               <a href="#" className=" hover:underline">About</a>
             </li>
             <li className="mb-4">
@@ -22,14 +55,20 @@ function Footer() {
             </li>
             <li className="mb-4">
               <a href="#" className="hover:underline">Blog</a>
-            </li>
+            </li> */}
           </ul>
         </div>
         <div>
-          <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Social links</h2>
+          <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Browse porperties</h2>
           <ul className="text-gray-500 dark:text-gray-400 font-medium">
-           
-            <li className="mb-4">
+           {
+            BrowseLinks.map((BrowseLink, browseindex) => (
+              <li className="mb-4" key={browseindex}>
+                <Link href={BrowseLink.route} className="hover:underline">{BrowseLink.label}</Link>
+              </li>
+            ))
+           }
+            {/* <li className="mb-4">
               <a href="#" className="hover:underline">Twitter</a>
             </li>
             <li className="mb-4">
@@ -37,38 +76,20 @@ function Footer() {
             </li>
             <li className="mb-4">
               <a href="#" className="hover:underline">Contact Us</a>
-            </li>
+            </li> */}
           </ul>
         </div>
+       
         <div>
-          <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
+          <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Useful Links</h2>
           <ul className="text-gray-500 dark:text-gray-400 font-medium">
-            <li className="mb-4">
-              <a href="#" className="hover:underline">Privacy Policy</a>
+        {
+          UsefulLinks.map((usefulLink, usefulindex) => (
+            <li className="mb-4" key={usefulindex}>
+              <Link href={usefulLink.route} className="hover:underline">{usefulLink.label}</Link>
             </li>
-            <li className="mb-4">
-              <a href="#" className="hover:underline">Licensing</a>
-            </li>
-            <li className="mb-4">
-              <a href="#" className="hover:underline">Terms &amp; Conditions</a>
-            </li>
-          </ul>
-        </div>
-        <div>
-          <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Download</h2>
-          <ul className="text-gray-500 dark:text-gray-400 font-medium">
-            <li className="mb-4">
-              <a href="#" className="hover:underline">iOS</a>
-            </li>
-            <li className="mb-4">
-              <a href="#" className="hover:underline">Android</a>
-            </li>
-            <li className="mb-4">
-              <a href="#" className="hover:underline">Windows</a>
-            </li>
-            <li className="mb-4">
-              <a href="#" className="hover:underline">MacOS</a>
-            </li>
+          ))
+        }
           </ul>
         </div>
       </div>
