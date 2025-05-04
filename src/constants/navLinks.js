@@ -1,42 +1,42 @@
 const navLinks = [
   {
     route: "/",
-    Label: "Home",
+    label: "Home",
     isAuth: false,
   },
   {
     route: "/properties",
-    Label: "Properties",
+    label: "Properties",
     isAuth: false,
     submenu: [
       {
         route: "/buy",
-        Label: "Buy",
+        label: "Buy",
       },
       {
         route: "/rent",
-        Label: "Rent",
+        label: "Rent",
       },
     ],
   },
   {
     route: "/agents",
-    Label: "Agents",
+    label: "Agents",
     isAuth: false,
   },
   {
     route: "/about",
-    Label: "About",
+    label: "About",
     isAuth: false,
   },
   {
     route: "/contact",
-    Label: "Contact",
+    label: "Contact",
     isAuth: false,
   },
   {
     route: "/company",
-    Label: "Company",
+    label: "Company",
     isAuth: false,
   },
 ];

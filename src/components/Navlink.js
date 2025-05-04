@@ -19,7 +19,7 @@ function Navlink({ navLink }) {
       onMouseLeave={() => setShowDropdown(false)}
     >
       <Link
-        href="navLink.route"
+        href={navLink.route}
         className={`${
           isActive
             ? "text-red-600"
