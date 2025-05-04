@@ -4,7 +4,7 @@ const footerLinks = [
         label: "About Us",
     },
     {
-        route: "/agents",
+        route: "/agents/agent-registration",
         label: "Become an Agent ",
     },
     {
