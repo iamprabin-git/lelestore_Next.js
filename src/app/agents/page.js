@@ -5,7 +5,7 @@ import AgentsLinks from "@/constants/agents";
 
 function Agentspage() {
   return (
-    <section className="bg-white dark:bg-gray-900 container">
+    <section className="max-w-7xl mx-auto bg-white dark:bg-gray-900 container">
       <h1 className="text-3xl font-bold underline pt-6 text-center">
         Agents List
       </h1>
@@ -13,7 +13,7 @@ function Agentspage() {
         {AgentsLinks.map((agentsLink, index) => (
           <div
             key={index}
-            className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700"
+            className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700"
           >
             <Link href="#">
               <Image
