@@ -43,6 +43,10 @@ const navLinks = [
         route: "/team",
         label: "Our Team",
       },
+      {
+        route: "/service",
+        label: "Our Services",
+      },
     ],
   },
 ];
