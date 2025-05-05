@@ -6,11 +6,11 @@ const UsefulLinks = [
         label: "land Valuation of Nepal",
     },
     {
-        route: "/agents",
+        route: "/agentOfMonth",
         label: "Agents of Months",
     },
     {
-        route: "/buyers",
+        route: "/buyerOfMonth",
         label: "Buyers of the Months",
     },
     {
