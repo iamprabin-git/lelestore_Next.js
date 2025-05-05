@@ -1,9 +1,9 @@
 // constants/TeamMembers.js
 import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
-import team1 from "../assets/images/agent1.jpg";
+import team1 from "../assets/images/prabin.png";
 import team2 from "../assets/images/agent2.jpg";
 import team3 from "../assets/images/agent3.png";
-import team4 from "../assets/images/samjhana.jpg";
+import team4 from "../assets/images/samjhana.png";
 
 const TeamMembers = [
   

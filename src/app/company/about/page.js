@@ -4,6 +4,7 @@ import image from "../../../assets/images/about1.png";
 import React, { useState } from "react";
 import MeetOurTeam from "@/components/OurTeam";
 import ServicesSection from "@/components/Services";
+import ClientReviews from "@/components/Reviews";
 
 function AboutPage() {
 
@@ -87,6 +88,7 @@ function AboutPage() {
           
           <ServicesSection />
           <MeetOurTeam/>
+          <ClientReviews/>  
      
 
     </section>

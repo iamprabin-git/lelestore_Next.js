@@ -1,4 +1,4 @@
-import agent1 from "../assets/images/agent1.jpg";
+import agent1 from "../assets/images/prabin.png";
 import agent2 from "../assets/images/agent2.jpg";
 import agent3 from "../assets/images/agent3.png";
 
