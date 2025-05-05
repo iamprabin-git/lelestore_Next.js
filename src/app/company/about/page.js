@@ -2,6 +2,8 @@
 import Image from "next/image";
 import image from "../../../assets/images/about1.png";
 import React, { useState } from "react";
+import MeetOurTeam from "@/components/OurTeam";
+import ServicesSection from "@/components/Services";
 
 function AboutPage() {
 
@@ -82,7 +84,9 @@ function AboutPage() {
           )}
         </div>
       </div>
-
+          
+          <ServicesSection />
+          <MeetOurTeam/>
      
 
     </section>
