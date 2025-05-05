@@ -1,9 +1,10 @@
+import MeetOurTeam from '@/components/OurTeam';
 import React from 'react'
 
 function TeamPage() {
   return (
     <div>
-      Team
+      <MeetOurTeam/>
     </div>
   )
 }

@@ -2,6 +2,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import "./globals.css"; // keep your global styles here
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
