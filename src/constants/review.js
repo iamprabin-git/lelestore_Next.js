@@ -11,6 +11,12 @@ const reviews = [
     image: client1,
   },
   {
+    name: "Rakesh Maharjan",
+    message: "Excellent and professional service. Thank you!",
+    location: "kathmandu",
+    image: client3,
+  },
+  {
     name: "Krishna Dangol",
     message: "Transparent and trustworthy. Highly recommend for any real estate needs.",
     location: "Godawari Municipality-5, Lalitpur",
@@ -22,6 +28,7 @@ const reviews = [
     location: "Jajarkot Recently live in Godawari Municipality-5, lele, Lalitpur",
     image: client3,
   },
+ 
 ];
 
 export default reviews;
