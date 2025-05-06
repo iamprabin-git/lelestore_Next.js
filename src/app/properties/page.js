@@ -10,7 +10,7 @@ function PropertiesPage() {
         <div className="flex flex-col-4 gap-3 items-center justify-center">
         <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
         <span className="relative bg-red-600 text-white font-semibold px-2 py-1">Sale</span>
-            <Link href="#">
+            <Link href="/propetyid">
               <Image className="rounded-t-lg" src={logo} alt="property" />
             </Link>
             <div className="p-5">
