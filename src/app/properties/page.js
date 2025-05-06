@@ -1,20 +1,26 @@
+"use client";
 import Image from 'next/image';
 import Link from 'next/link';
 import logo from '../../assets/images/logo.png';
 
+
 function PropertiesPage() {
+ 
+
   return (
     <>
       <section className="bg-white dark:bg-gray-900 ">
         <h1 className="text-3xl font-bold underline pt-6 text-center">Recently Listed Properties</h1>
         <div className="flex flex-col-4 gap-3 items-center justify-center">
+      
         <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
         <span className="relative bg-red-600 text-white font-semibold px-2 py-1">Sale</span>
-            <Link href="/propetyid">
+        <Link href="#">
+
               <Image className="rounded-t-lg" src={logo} alt="property" />
             </Link>
             <div className="p-5">
-              <Link href="#">
+              <Link href={"/propetyid"}>
                 <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                   Land on sale At Lele
                 </h5>
