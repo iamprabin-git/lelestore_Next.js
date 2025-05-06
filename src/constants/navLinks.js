@@ -47,6 +47,10 @@ const navLinks = [
         route: "/service",
         label: "Our Services",
       },
+      {
+        route: "/price",
+        label: "Pricing of Listings",
+      },
     ],
   },
 ];
