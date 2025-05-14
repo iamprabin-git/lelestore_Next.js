@@ -1,10 +1,12 @@
 "use client"
 import { useForm} from 'react-hook-form'
+import { login } from '@/api/auth';
 
 function Loginpage() {
   const { register, handleSubmit, formState: { errors }, } = useForm();
 
-  function submitForm(data) {
+ async function submitForm(data) {
+  await login(data);
     console.log(data);
   }
 
