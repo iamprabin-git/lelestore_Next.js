@@ -12,8 +12,10 @@ function AuthLayout({children}) {
       className='h-auto w-full fixed top-0 left-0 -z-1 opacity-50'/>
       
       <div className='grid grid-cols-1 md:grid-cols-2 w-full md:w-1/2 shadow-blue-100 rounded-lg p-2 bg-white min-h-[50vh]'>
-        {children}
-        <Image  src={placeholder} alt='image' height={1200} width={1200} className='h-full object-cover w-auto rounded-r-md'/>
+      <div className='py-12 px-8'>
+        {children}</div>
+        
+        <Image  src={placeholder} alt='image' height={1200} width={1200} className='h-full object-cover w-auto rounded-r-xl hidden md:block'/>
       </div>
     </section>
   )
