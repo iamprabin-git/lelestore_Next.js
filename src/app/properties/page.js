@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import ProductCard from '@/components/properties/Card';
-import { Loader } from './loading';
+
 
 async function PropertiesPage() {
   const response = await axios.get("https://node-20250302.vercel.app/api/products");
@@ -9,8 +9,7 @@ async function PropertiesPage() {
   const products = response?.data;
   
   return (
-    <div className='grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 py-8'>
-      
+    <div className='container grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 py-8 '>
      {
       products?.map((product, index)=>(
         <ProductCard key={index} product={product}/>

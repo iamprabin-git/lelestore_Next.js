@@ -4,9 +4,9 @@ import card from '../../assets/images/product-card.jpg'
 
 function ProductCard({product}) {
   return (
-    <div className='w-full h-max rounded-2xl dark:shadow dark:shadow-amber-50 px-5 py-4 border border-b-amber-950 '>
+    <div className='w-full h-max rounded-2xl shadow-blue-600 dark:shadow dark:shadow-amber-50 px-5 py-4 border border-b-amber-950 '>
        <div className='flex justify-center'>
-        <Image src={card} alt='image' height={500} width={500} className='max-h-40 w-auto'/>
+        <Image src={product.imageUrls[0] ?? card} alt='image' height={500} width={500} className='max-h-40 w-auto'/>
         </div>
     
     <div className='py-3 '>

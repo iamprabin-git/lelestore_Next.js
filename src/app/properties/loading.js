@@ -1,6 +1,3 @@
-import Image from "next/image";
-import card from "../../assets/images/product-card.jpg";
-
 function Loader() {
   return (
     <div className="w-full h-max rounded-2xl dark:shadow dark:shadow-amber-50 px-5 py-4 border border-b-amber-950 animate-pulse ease-in-out duration-150">
@@ -20,9 +17,19 @@ function Loader() {
 }
 export { Loader };
 function ProductsLoader() {
+     return (
     <div className='grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5 py-8'>
-  return <Loader />
-  </div>;
+ 
+  <Loader />
+  <Loader />
+  <Loader />
+  <Loader />
+  <Loader />
+  <Loader />
+  <Loader />
+  <Loader />
+  </div>);
+  
 }
 
 export default ProductsLoader;
