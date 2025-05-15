@@ -1,16 +1,33 @@
 "use client"
-import { useForm} from 'react-hook-form'
+import { set, useForm} from 'react-hook-form'
 import { login } from '@/api/auth';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { toast } from 'react-toastify';
+import { FaRegEye } from "react-icons/fa";
+import { FaRegEyeSlash } from "react-icons/fa";
+import { EMAIL_REGEX } from '@/constants/regex';
 
 function Loginpage() {
+  const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const { register, handleSubmit, formState: { errors }, } = useForm();
 
- async function submitForm(data) {
-  await login(data);
-    console.log(data);
-  }
+  const router=useRouter();
 
-  
+ async function submitForm(data) {
+  setLoading(true);
+  try {
+      await login(data);
+      router.push('/');
+  } catch (error) {
+     
+      toast.error(error.response.data);
+  }
+  finally {
+      setLoading(false);
+  }
+}
   return (
     <div>
       <h1 className='text-2xl font-bold italic text-center'>Login</h1>
@@ -25,16 +42,16 @@ function Loginpage() {
          {...register("email",{
           required: "Email is required",
            pattern: {
-              value: /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
+              value: EMAIL_REGEX,
             }
          })}
           className='w-full border rounded py-1 px-2 my-1' />
           <p className='text-red-600'>{errors?.email?.message}</p>
         </div>
-        <div className='py-2'>
+        <div className='py-2 relative'>
           <label htmlFor="password">Password</label>
           <input 
-          type="password" 
+          type={showPassword ? "text" : "password"} 
           name="password" 
           id="password" 
           {...register("password",{
@@ -43,10 +60,14 @@ function Loginpage() {
           })}
           placeholder='*********' 
           className='w-full border rounded py-1 px-2 my-1' />
+          <button onClick={() => setShowPassword(!showPassword)} className='absolute top-13 right-2 transform -translate-y-1/2'>{showPassword ? <FaRegEye /> :<FaRegEyeSlash />}</button>
           <p className='text-red-600'>{errors?.password?.message}</p>
         </div>
         <div className='py-2'>
-        <input type="submit" value="Login" className='w-full bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded'/>
+        <input type="submit" 
+        disabled={loading}
+        value={loading ? 'Logging in...' : 'Login'}
+        className='w-full bg-blue-700 hover:bg-blue-800 disabled:opacity-70 text-white font-bold py-2 px-4 rounded'/>
         </div>
       </form>
     </div>

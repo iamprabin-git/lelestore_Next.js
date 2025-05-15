@@ -2,6 +2,7 @@ import Image from 'next/image';
 import React from 'react'
 import placeholder from '../../assets/images/auth-hero.jpg'
 import bg from '../../assets/images/auth-bg.png'
+import { ToastContainer } from 'react-toastify';
 
 function AuthLayout({children}) {
   return (
@@ -17,6 +18,7 @@ function AuthLayout({children}) {
         
         <Image  src={placeholder} alt='image' height={1200} width={1200} className='h-full object-cover w-auto rounded-r-xl hidden md:block'/>
       </div>
+       <ToastContainer />
     </section>
   )
 }
