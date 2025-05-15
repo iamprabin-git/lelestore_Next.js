@@ -4,7 +4,7 @@ import ProductCard from '@/components/properties/Card';
 
 
 async function PropertiesPage() {
-  const response = await axios.get("https://node-20250302.vercel.app/api/products");
+  const response = await axios.get("https://ecommerce-test-api-green.vercel.app/api/products");
 
   const products = response?.data;
   
