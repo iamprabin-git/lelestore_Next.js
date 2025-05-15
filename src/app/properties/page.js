@@ -1,10 +1,11 @@
 import React from 'react'
-import axios from 'axios'
 import ProductCard from '@/components/properties/Card';
+import { getProperties } from '@/api/properties';
+
 
 
 async function PropertiesPage() {
-  const response = await axios.get("https://ecommerce-test-api-green.vercel.app/api/products");
+  const response = await getProperties();
 
   const products = response?.data;
   
