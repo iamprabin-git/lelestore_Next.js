@@ -8,6 +8,8 @@ import { FaRegEye } from "react-icons/fa";
 import { FaRegEyeSlash } from "react-icons/fa";
 import { EMAIL_REGEX } from "@/constants/regex";
 import Link from "next/link";
+import { useDispatch } from "react-redux";
+import { loginUser } from "@/redux/auth/authActions";
 
 function Loginpage() {
   const [loading, setLoading] = useState(false);
@@ -19,18 +21,14 @@ function Loginpage() {
   } = useForm();
 
   const router = useRouter();
+  const dispatch=useDispatch();
 
-  async function submitForm(data) {
-    setLoading(true);
-    try {
-      await login(data);
-      router.push("/");
-    } catch (error) {
-      toast.error(error.response.data);
-    } finally {
-      setLoading(false);
-    }
-  }
+   function submitForm(data) {
+    
+      dispatch(loginUser(data));
+
+   }
+    
   return (
     <div>
       <h1 className="text-2xl font-bold italic text-center">Login</h1>

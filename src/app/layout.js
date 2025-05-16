@@ -4,6 +4,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./globals.css"; // keep your global styles here
+import AppProvider from "@/redux/provider";
+
 
 
 const geistSans = Geist({
@@ -29,9 +31,11 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <AppProvider>
         <Header/>
         {children}
         <Footer/>
+        </AppProvider>
       </body>
     </html>
   );
