@@ -5,10 +5,13 @@ import logo from "../assets/images/logo-3.png";
 import Link from "next/link";
 import navLinks from "@/constants/navLinks";
 import Navlink from "./Navlink";
-import { useSelector } from "react-redux";
-
+import { useDispatch, useSelector } from "react-redux";
+import { RiLogoutBoxRLine } from "react-icons/ri";
+import { logoutUser } from "@/redux/auth/authSlice";
 function Header() {
   const { user } = useSelector((state) => state);
+
+  const dispatch = useDispatch();
 
   return (
     <header>
@@ -39,8 +42,9 @@ function Header() {
               </>
             )}
             {user && (
-              <div className="text-sm text-gray-800 dark:text-white">
-                Welcome, {user.name || "User"}
+              <div className="text-sm text-gray-800 dark:text-white flex">
+               <h2 className="mr-2">Welcome, {user.name || "User"}</h2> 
+                <button onClick={() => dispatch(logoutUser())} className="bg-slate-700 p-2 text-white rounded"><RiLogoutBoxRLine /></button>
               </div>
             )}
 
