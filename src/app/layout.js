@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./globals.css"; // keep your global styles here
 import AppProvider from "@/redux/provider";
+import MainLayout from "@/layouts/MainLayout";
 
 
 
@@ -26,15 +27,17 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" >
      
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <AppProvider>
+          <MainLayout>
         <Header/>
         {children}
         <Footer/>
+        </MainLayout>
         </AppProvider>
       </body>
     </html>
