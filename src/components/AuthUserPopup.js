@@ -9,12 +9,14 @@ function AuthUserPopup({user}) {
   return (
       <div className="absolute top-10 right-0 bg-white shadow-lg p-4">
         <h4 className="whitespace-nowrap font-medium text-lg">Hi!, {user.name || "User"}</h4>
-        <Link href="/profile" className="items-center border rounded-lg px-2 py-1 hover:bg-slate-100 " onClick={() => setShowpopup(false)}>Profile</Link>
+        
+        <span className='my-1 flex '>
+        <Link href="/dashboard" className="bg-slate-700 text-white items-center border rounded-lg px-2 py-1 hover:bg-slate-100 hover:text-black" onClick={() => setShowpopup(false)}>Admin Panel</Link></span>
+        <span className='my-1 flex '><Link href="/profile" className="bg-slate-700 text-white items-center border rounded-lg px-2 py-1 hover:bg-slate-100 hover:text-black"onClick={() => setShowpopup(false)}>Profile Details</Link></span>
         
       <button
         onClick={() => dispatch(logoutUser())}
-        className="bg-slate-700 py-1 px-4 text-white rounded flex items-center gap-2 mt-2"
-      >
+        className="flex gap-5 bg-slate-700 text-white items-center border rounded-lg px-3 py-1 hover:bg-slate-100 hover:text-black">
         
         <span onClick={() => setShowpopup(false)}>Logout</span>
         <RiLogoutBoxRLine />
