@@ -26,4 +26,4 @@ function AuthUserPopup({user}) {
   )
 }
 
-export default AuthUserPopup
+export default AuthUserPopup;

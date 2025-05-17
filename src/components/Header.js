@@ -23,7 +23,7 @@ function Header() {
 
 
   return (
-    <header>
+    <header className="sticky top-0 z-50 ">
       <nav className="bg-white border-gray-200 dark:bg-slate-900">
         <div className="max-w-screen-xl shadow-lg flex flex-wrap items-center justify-between mx-auto p-4">
           {/* Logo and Title */}
