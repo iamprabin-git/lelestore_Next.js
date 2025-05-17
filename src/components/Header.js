@@ -11,6 +11,7 @@ import { logoutUser } from "@/redux/auth/authSlice";
 import { useState } from "react";
 import { FaMoon, FaSun } from "react-icons/fa";
 import { toggleTheme } from "@/redux/userPreference/userPreferenceSlice";
+import AuthUser from "./AuthUser";
 
 function Header() {
   const { user } = useSelector((state) => state.auth);
@@ -58,15 +59,7 @@ function Header() {
                 </Link>
               </>
             ) : (
-              <div className="text-sm text-gray-800 dark:text-white flex items-center gap-2">
-                <span>Welcome, {user.name || "User"}</span>
-                <button
-                  onClick={() => dispatch(logoutUser())}
-                  className="bg-slate-700 p-2 text-white rounded"
-                >
-                  <RiLogoutBoxRLine />
-                </button>
-              </div>
+              <AuthUser user={user} />  
             )}
 
             {/* Mobile Menu Button */}
