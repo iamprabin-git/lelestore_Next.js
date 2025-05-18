@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AiFillPieChart } from "react-icons/ai";
 import { FaHouseUser } from "react-icons/fa";
+import { GrProductHunt } from "react-icons/gr";
 
 const sidebarMenu = [
   {
@@ -11,7 +12,14 @@ const sidebarMenu = [
     route: "/dashboard",
     icon: <AiFillPieChart className="w-5 h-5 text-gray-500" />,
   },
+
   {
+    label: "Product Management",
+    route: "/product-management",
+    icon: <GrProductHunt className="w-5 h-5 text-gray-500" />,
+
+  },
+    {
     label: "User Management",
     route: "/user-management",
     icon: <FaHouseUser className="w-5 h-5 text-gray-500" />,
@@ -22,8 +30,8 @@ function AdminSidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 hidden sm:block">
-      <div className="h-full px-3 pb-6 pt-25 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+    <aside className="absolute top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 hidden sm:block">
+      <div className="h-full px-3 pb-6 pt-5 overflow-y-auto bg-gray-50 dark:bg-gray-800">
         <ul className="space-y-2 font-medium">
           {sidebarMenu.map((navLink, i) => {
             const isActive =
