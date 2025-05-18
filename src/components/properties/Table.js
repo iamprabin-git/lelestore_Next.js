@@ -1,5 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { IoIosCog } from "react-icons/io";
+import { TiPencil } from "react-icons/ti";
+import { RiDeleteBin6Fill } from "react-icons/ri";
 import React from 'react'
 
 function ProductTable({products}) {
@@ -27,7 +30,7 @@ function ProductTable({products}) {
           Created At
         </th>
         <th scope="col" className="px-6 py-3">
-          Action
+          <IoIosCog className='text-2xl'/>
         </th>
       </tr>
     </thead>
@@ -60,8 +63,9 @@ function ProductTable({products}) {
         <td className="px-6 py-4">
           {product.createdAt}
         </td>
-        <td className="px-6 py-4">
-          <Link href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</Link>
+        <td className="px-6 py-10 flex">
+          <Link href={`/product-management/${product.id}/edit`} className="bg-blue-500 text-white text-xs font-medium me-2 px-3 py-3 rounded-sm dark:bg-blue-900 dark:text-blue-300 hover:opacity-90"><TiPencil /></Link>
+          <button className="bg-red-600 text-white text-xs font-medium me-2 px-3 py-3 rounded-sm cursor-pointer dark:bg-red-900 dark:text-red-500"><RiDeleteBin6Fill /></button>
         </td>
         
       </tr>
