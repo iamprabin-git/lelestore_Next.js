@@ -6,27 +6,34 @@ import Link from "next/link";
 import navLinks from "@/constants/navLinks";
 import Navlink from "./Navlink";
 import { useDispatch, useSelector } from "react-redux";
-import { RiLogoutBoxRLine } from "react-icons/ri";
 import { logoutUser } from "@/redux/auth/authSlice";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaMoon, FaSun } from "react-icons/fa";
 import { toggleTheme } from "@/redux/userPreference/userPreferenceSlice";
 import AuthUser from "./AuthUser";
+import { DARK_THEME } from "@/constants/theme";
 
 function Header() {
   const { user } = useSelector((state) => state.auth);
+  const { theme } = useSelector((state) => state.userPreference);
   const dispatch = useDispatch();
   const [menuOpen, setMenuOpen] = useState(false);
 
-  
-
-
+  // Apply theme class to <html>
+  useEffect(() => {
+    const html = document.documentElement;
+    if (theme === DARK_THEME) {
+      html.classList.add("dark");
+    } else {
+      html.classList.remove("dark");
+    }
+  }, [theme]);
 
   return (
-    <header className="sticky top-0 z-50 ">
-      <nav className="bg-white border-gray-200 dark:bg-slate-900">
+    <header className="sticky top-0 z-50">
+      <nav className="bg-white border-gray-200 dark:bg-slate-900 dark:text-white">
         <div className="max-w-screen-xl shadow-lg flex flex-wrap items-center justify-between mx-auto p-4">
-          {/* Logo and Title */}
+          {/* Logo */}
           <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
             <Image src={logo} height={150} width={150} className="h-15 w-auto" alt="Logo" />
             <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
@@ -34,13 +41,14 @@ function Header() {
             </span>
           </Link>
 
-          {/* Auth Buttons + Theme Toggle */}
+          {/* Auth + Theme + Toggle */}
           <div className="flex gap-4 items-center md:order-2">
             <button
               onClick={() => dispatch(toggleTheme())}
-              
+              className="p-2 text-xl rounded-full hover:bg-gray-200 dark:hover:bg-gray-700"
+              title="Toggle Theme"
             >
-             theme
+              {theme === DARK_THEME ? <FaSun /> : <FaMoon />}
             </button>
 
             {!user ? (
@@ -59,10 +67,10 @@ function Header() {
                 </Link>
               </>
             ) : (
-              <AuthUser user={user} />  
+              <AuthUser user={user} />
             )}
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Toggle Button */}
             <button
               onClick={() => setMenuOpen(!menuOpen)}
               type="button"
@@ -88,7 +96,7 @@ function Header() {
             className={`w-full md:flex md:w-auto md:order-1 ${menuOpen ? "block" : "hidden"}`}
             id="navbar-cta"
           >
-            <ul className="flex flex-col space-y-3 md:space-y-0 md:flex-row md:space-x-6 font-medium p-4 md:p-0 mt-4 md:mt-0 border border-gray-100 md:border-0 rounded-lg bg-gray-50 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+            <ul className="flex flex-col space-y-3 md:space-y-0 md:flex-row md:space-x-6 font-medium p-4 md:p-0 mt-4 md:mt-0 border border-gray-100 md:border-0 rounded-lg bg-gray-50 md:bg-white dark:bg-gray-800 md:dark:bg-slate-900 dark:border-gray-700">
               {navLinks.map(
                 (navLink, i) =>
                   (user || !navLink.isAuth) && <Navlink navLink={navLink} key={i} />
