@@ -3,7 +3,7 @@ import React from 'react'
 
 function ErrorLayout({error}) {
   return (
-    <div>{error.message}</div>
+    <div className='text-center text-2xl'>{error.message}</div>
   )
 }
 
