@@ -4,30 +4,32 @@ import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/navigation';
 import AdminSidebar from '@/components/admin/Sidebar';
+import { ROLE_ADMIN, ROLE_AGENT } from '@/constants/roles';
+import { all } from 'axios';
+import { allowedAdminRoles } from '@/helpers/auth';
 
 function AdminLayout({ children }) {
   const router = useRouter();
   const { user } = useSelector((state) => state.auth);
 
   // Function to check if the user has the allowed role
-  const allowedRoles = ['admin', 'agent'];
+  function allowedRoles(roles){
+    return roles.some((role) => [ROLE_ADMIN, ROLE_AGENT].includes(role));
+  } 
 
   useEffect(() => {
-    if (!user) {
-      // Not logged in → go to login
-      router.push('/login');
-    } else if (!allowedRoles.includes(user.role)) {
-      // Logged in but not authorized → go to unauthorized page
-      router.push('/dashboard');
-    }
-  }, [user, router]);
+     if (!user) router.push('/');
+      const isAllowed = allowedAdminRoles(user.roles);
+      if (!isAllowed) router.push('/');
+      },
+     [user, router]);
 
   return (
     <div className="relative min-h-screen">
       <AdminSidebar />
-      <main className="pl-64 p-6 bg-gray-100 dark:bg-gray-900 min-h-screen">
+      <div className="pl-64 p-6 bg-gray-100 dark:bg-gray-900 min-h-screen">
         {children}
-      </main>
+      </div>
     </div>
   );
 }

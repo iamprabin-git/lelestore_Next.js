@@ -22,7 +22,7 @@ const navLinks = [
   {
     route: "/agents",
     label: "Agents",
-    isAuth: false,
+    isAuth: true,
   },
  
   {
