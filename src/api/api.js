@@ -1,17 +1,19 @@
-import axios from "axios";
+// utils/api.js
 import config from "@/config";
-import { getAuthToken } from "@/helpers/auth";
+import axios from "axios";
 
 const api = axios.create({
   baseURL: config.apiUrl,
 });
 
-api.interceptors.request.use((config) => {
-  const token = getAuthToken();
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
-  }
-  return config;
-});
+if (typeof window !== "undefined") {
+  api.interceptors.request.use((config) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  });
+}
 
 export default api;
