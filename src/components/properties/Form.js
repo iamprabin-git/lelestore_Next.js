@@ -18,7 +18,7 @@ function PropertyForm({product, categories}) {
     formData.append("brand", data.brand);
     formData.append("price", data.price);
     formData.append("category", data.category);
-    formData.append("description", data.description);
+   
 
     if (data.image && data.image[0]) {
       formData.append("image", data.image[0]); // ✅ Correctly handle FileList

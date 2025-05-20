@@ -7,7 +7,7 @@ async function getProperties() {
 }
 
 async function getPropertyByUser() {
-    return await api.get(`/api/products/users`);
+    return await api.get(`${config.apiUrl}/api/products/users`);
 }
 
 async function getPropertyById(id) {
