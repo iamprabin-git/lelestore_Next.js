@@ -1,16 +1,42 @@
 "use client";
-import { getCategories } from "@/api/properties";
-import React from "react";
+import { createProperty, getCategories } from "@/api/properties";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
+import Spinner from "./Spinner";
 
 function PropertyForm({product, categories}) {
-    const {register, handleSubmit}=useForm({
+  const [loading, setLoading] = useState(false);
+    const {register, handleSubmit, reset}=useForm({
         values:product,
     });
 
-    function submitForm(data){
-        console.log(data)
+     async function submitForm(data) {
+    setLoading(true);
+    const formData = new FormData();
+    formData.append("name", data.name);
+    formData.append("brand", data.brand);
+    formData.append("price", data.price);
+    formData.append("category", data.category);
+    formData.append("description", data.description);
+
+    if (data.image && data.image[0]) {
+      formData.append("image", data.image[0]); // ✅ Correctly handle FileList
     }
+
+    try {
+      await createProperty(formData);
+      toast.success("Product created successfully!", { autoClose: 750 });
+      reset(); // Clear form if needed
+    } catch (error) {
+      toast.error(
+        error.response?.data?.message || "Failed to create product",
+        { autoClose: 1000 }
+      );
+    } finally {
+      setLoading(false);
+    }
+  }
   return (
     <form onSubmit={handleSubmit(submitForm)}>
       <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
@@ -120,6 +146,7 @@ function PropertyForm({product, categories}) {
         className="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-slate-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800 cursor-pointer"
       >
        {product?"Edit product":"Add product"}
+       <Spinner />
       </button>
     </form>
   );

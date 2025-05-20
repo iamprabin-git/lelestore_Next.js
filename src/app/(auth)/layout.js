@@ -18,7 +18,7 @@ function AuthLayout({children}) {
         
         <Image  src={placeholder} alt='image' height={1200} width={1200} className='h-full object-cover w-auto rounded-r-xl hidden md:block'/>
       </div>
-       <ToastContainer />
+      
     </section>
   )
 }

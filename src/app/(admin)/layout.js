@@ -18,11 +18,17 @@ function AdminLayout({ children }) {
   } 
 
   useEffect(() => {
-     if (!user) router.push('/');
-      const isAllowed = allowedAdminRoles(user.roles);
-      if (!isAllowed) router.push('/');
-      },
-     [user, router]);
+  if (!user) {
+    router.push('/');
+    return;
+  }
+
+  const isAllowed = allowedAdminRoles(user.roles);
+  if (!isAllowed) {
+    router.push('/');
+  }
+}, [user, router]);
+
 
   return (
     <div className="relative min-h-screen">
