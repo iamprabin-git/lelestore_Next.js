@@ -26,6 +26,9 @@ async function updateProperty(id, data) {
     return await api.put(`/api/products/${id}`, data);
 }
 
+async function deleteProperty(id) {
+    return await api.delete(`/api/products/${id}`);
+}
 
 
     
@@ -38,4 +41,5 @@ export {
     getCategories,
     createProperty,
     updateProperty,
+    deleteProperty,
 };

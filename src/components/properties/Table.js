@@ -3,9 +3,16 @@ import Link from "next/link";
 import { IoIosCog } from "react-icons/io";
 import { TiPencil } from "react-icons/ti";
 import { RiDeleteBin6Fill } from "react-icons/ri";
-import React from "react";
+import React, { useState } from "react";
+import DeletePropertyModal from "./Modal";
 
 function ProductTable({ products }) {
+  const [showModal, setShowModal] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  function removeProduct(product) {
+    setShowModal(true);
+    setSelectedProduct(product);
+  }
   return (
     <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
       <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
@@ -67,7 +74,10 @@ function ProductTable({ products }) {
                 >
                   <TiPencil />
                 </Link>
-                <button className="bg-red-600 text-white text-xs font-medium me-2 px-3 py-3 rounded-sm cursor-pointer dark:bg-red-900 dark:text-red-500">
+                <button
+                  className="bg-red-600 text-white text-xs font-medium me-2 px-3 py-3 rounded-sm cursor-pointer dark:bg-red-900 dark:text-red-500"
+                  onClick={() => removeProduct(product)}
+                >
                   <RiDeleteBin6Fill />
                 </button>
               </td>
@@ -75,6 +85,12 @@ function ProductTable({ products }) {
           ))}
         </tbody>
       </table>
+      <DeletePropertyModal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        product={selectedProduct}
+        setProduct={setSelectedProduct}
+      />
     </div>
   );
 }
