@@ -15,6 +15,8 @@ function PropertyForm({ product, categories }) {
     values: product,
   });
 
+  
+
   async function submitForm(data) {
     setLoading(true);
     const formData = new FormData();

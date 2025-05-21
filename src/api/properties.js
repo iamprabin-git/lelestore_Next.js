@@ -22,6 +22,9 @@ async function getCategories() {
     return await axios.get(`${config.apiUrl}/api/products/categories`);
 }
 
+async function updateProperty(id, data) {
+    return await api.put(`/api/products/${id}`, data);
+}
 
 
 
@@ -33,5 +36,6 @@ export {
     getPropertyById,
     getPropertyByUser,
     getCategories,
-    createProperty
+    createProperty,
+    updateProperty,
 };
