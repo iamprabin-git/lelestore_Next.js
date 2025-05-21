@@ -1,24 +1,22 @@
 "use client";
-import { createProperty, getCategories } from "@/api/properties";
+import { createProperty, getCategories, updateProperty } from "@/api/properties";
 import React, { useState } from "react";
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import Spinner from "./Spinner";
 import { IoCloudUploadOutline } from "react-icons/io5";
 import Image from "next/image";
 
-function PropertyForm({ product, categories }) {
+function PropertyForm({id, product, categories }) {
   const [loading, setLoading] = useState(false);
   const [localImageUrls, setLocalImageUrls] = useState([]);
-  const [productImages, setProductImages] = useState(null);
+  const [productImages, setProductImages] = useState([]);
   const { register, handleSubmit, reset } = useForm({
     values: product,
   });
 
-  
-
-  async function submitForm(data) {
-    setLoading(true);
+  function prepareData(data){
+    
     const formData = new FormData();
     formData.append("name", data.name);
     formData.append("brand", data.brand);
@@ -30,10 +28,25 @@ function PropertyForm({ product, categories }) {
       formData.append("images", image);
     });   
 
+    return formData;
+  }
+
+
+
+  async function submitForm(data) {
+    setLoading(true);
+    const formData = prepareData(data);
+    
     try {
+      if (product) {
+        await updateProperty(id, formData);
+        toast.success("Product updated successfully!", { autoClose: 750 });
+        return;
+      }
       await createProperty(formData);
+       reset();
       toast.success("Product created successfully!", { autoClose: 750 });
-      reset(); // Clear form if needed
+      // Clear form if needed
     } catch (error) {
       toast.error(error.response?.data?.message || "Failed to create product", {
         autoClose: 1000,

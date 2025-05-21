@@ -12,6 +12,7 @@ async function ProductEditPage({params}) {
           Edit <span className='text-amber-400 italic'>{response?.data?.name}</span>
         </h2>
         <PropertyForm 
+        id={id}
         product={response?.data} 
         categories={categoriesResponse?.data}/>
       </div>
