@@ -1,10 +1,28 @@
 
+// import { getPropertyById } from "@/api/properties";
+// import ProductDetail from "@/components/properties/PropertyDetails";
+
+// export default async function ProductByIdPage({ params }) {
+//   const response = await getPropertyById(params.propertyId);
+//   const product = response.data;
+
+//   return <ProductDetail product={product} />;
+// }
+// app/product-management/[propertyId]/page.jsx
 import { getPropertyById } from "@/api/properties";
 import ProductDetail from "@/components/properties/PropertyDetails";
 
 export default async function ProductByIdPage({ params }) {
-  const response = await getPropertyById(params.propertyId);
-  const product = response.data;
+  try {
+    const response = await getPropertyById(params.propertyId);
+    const product = response.data;
 
-  return <ProductDetail product={product} />;
+    return <ProductDetail product={product} />;
+  } catch (error) {
+    return (
+      <div className="p-4 text-red-600">
+        Failed to load product. {error?.message || "Please try again later."}
+      </div>
+    );
+  }
 }

@@ -1,16 +1,19 @@
-"use client";
-import config from "@/config";
 import axios from "axios";
-import localStorage from "redux-persist/es/storage";
+import config from "@/config";
 
-const authToken = localStorage.getItem("token");
 const api = axios.create({
   baseURL: config.apiUrl,
-  headers: {
-    Authorization: `Bearer ${authToken}`,
-  },
 });
 
-
+// Add token dynamically before every request
+api.interceptors.request.use((req) => {
+  if (typeof window !== "undefined") {
+    const token = localStorage.getItem("authToken");
+    if (token) {
+      req.headers.Authorization = `Bearer ${token}`;
+    }
+  }
+  return req;
+});
 
 export default api;
