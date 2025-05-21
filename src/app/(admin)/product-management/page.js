@@ -1,20 +1,25 @@
 "use client";
 import { getPropertyByUser } from '@/api/properties';
 import ProductTable from '@/components/properties/Table';
+import { setDeleted } from '@/redux/product/productSlice';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 
 function ProductManagementPage() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const { deleteStatus }= useSelector(state=>state.product);
+  const dispatch = useDispatch();
+
   useEffect(() => {
     getPropertyByUser()
       .then(response => setProducts(response?.data))
       .catch(error => toast.error(error.response?.data))
-      .finally(() => setLoading(false));
-  }, []);
+      .finally(() => setLoading(false));dispatch(setDeleted(null));
+  }, [deleteStatus,dispatch]);
 
   return (
     <section className='py-3 pr-5'>
