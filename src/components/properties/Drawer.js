@@ -1,0 +1,84 @@
+"use client";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { IoIosClose } from "react-icons/io";
+
+function PropertyDrawer({ showFilters = true, setShowFilters }) {
+  const [maxPrice, setMaxPrice] = useState(100000000);
+  const [minPrice, setMinPrice] = useState(0);
+
+  const router = useRouter();
+
+  function setFilters() {
+    const params = new URLSearchParams();
+    params.set("min", minPrice);
+    params.set("max", maxPrice);
+    router.push(`?${params.toString()}`);
+    setShowFilters(false);
+  }
+  return (
+    <div
+      className={`h-svh w-full bg-[#0000002d] fixed top-0 left-0 z-10 ${
+        showFilters ? "block" : "hidden "
+      }`}
+    >
+      <div
+        className={`fixed top-20 left-0 z-50 w-64 h-screen py-14 px-5 overflow-y-auto transition-transform translate-x-0 bg-white dark:bg-gray-800 ${
+          showFilters ? "translate-x-0" : "-translate-x-64"
+        }`}
+      >
+        <h4 className="text-base font-semibold text-gray-500 uppercase dark:text-gray-400">
+          Filter Properties
+        </h4>
+        <button
+          onClick={() => setShowFilters(false)}
+          className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 end-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+        >
+          <IoIosClose className="w-7 h-7" />
+          <span className="sr-only">Close menu</span>
+        </button>
+        <div className="py-4 overflow-y-auto">
+          <div className="py-2">
+            <h5 className="mb-2 text-sm font-medium text-gray-900 dark:text-white justify-center">
+              Price Range
+            </h5>
+            <label
+              htmlFor="number-input"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Minimum Price:
+            </label>
+            <input
+              type="number"
+              name="min"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder={0}
+              min="{0}"
+              onChange={(e) => setMinPrice(e.target.value)}
+            />
+            <label
+              htmlFor="number-input"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >
+              Maximum Price:
+            </label>
+            <input
+              type="number"
+              name="max"
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder={10000000000}
+              min={0}
+              onChange={(e) => setMaxPrice(e.target.value)}
+            />
+          </div>
+        </div>
+        <button 
+        onClick={setFilters}
+        className="px-2 py-2 bg-slate-900 text-white items-center border rounded-lg hover:opacity-80 dark:bg-amber-100">
+          Apply Filter
+        </button>
+      </div>
+    </div>
+  );
+}
+export default PropertyDrawer;

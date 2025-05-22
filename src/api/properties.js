@@ -1,13 +1,15 @@
 import config from '@/config';
 import axios from 'axios';
 import api from './api';
+import getFormatedParams from '@/helpers/formatSearchParams';
 
  async function createProperty(data) {
   return await api.post('/api/products', data
   );
 }
-async function getProperties() {
-    return await axios.get(`${config.apiUrl}/api/products`);
+async function getProperties(searchParams) {
+   const query = getFormatedParams(searchParams);
+    return await axios.get(`${config.apiUrl}/api/products?${query}`);
 }
 
 async function getPropertyByUser() {
