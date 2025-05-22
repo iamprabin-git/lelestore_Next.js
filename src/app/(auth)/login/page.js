@@ -10,6 +10,7 @@ import { EMAIL_REGEX } from "@/constants/regex";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "@/redux/auth/authActions";
+import { HOME_ROUTE } from "@/constants/routes";
 
 function Loginpage() {
   
@@ -31,7 +32,7 @@ function Loginpage() {
 
    }
    useEffect(() => {
-    if (user) return router.push("/");
+    if (user) return router.push(HOME_ROUTE);
 
     if(error)
       toast.error(error, {
@@ -93,7 +94,7 @@ function Loginpage() {
         <div className="mt-4 text-center">
           <p className="text-sm text-gray-600">
             Don&apos;t have an account?{" "}
-            <Link href="/register"
+            <Link href="REGISTER_ROUTE"
               className="text-blue-600 hover:underline font-medium"
             >
               Register here

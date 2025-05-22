@@ -69,7 +69,7 @@ function ProductTable({ products }) {
               <td className="px-6 py-4">{product.createdAt}</td>
               <td className="px-6 py-10 flex">
                 <Link
-                  href={`/product-management/${product.id}/edit`}
+                  href={`product-management/${product.id}/edit`}
                   className="bg-blue-500 text-white text-xs font-medium me-2 px-3 py-3 rounded-sm dark:bg-blue-900 dark:text-blue-300 hover:opacity-90"
                 >
                   <TiPencil />

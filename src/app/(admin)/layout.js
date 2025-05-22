@@ -7,6 +7,7 @@ import AdminSidebar from '@/components/admin/Sidebar';
 import { ROLE_ADMIN, ROLE_AGENT } from '@/constants/roles';
 import { all } from 'axios';
 import { allowedAdminRoles } from '@/helpers/auth';
+import { HOME_ROUTE } from '@/constants/routes';
 
 function AdminLayout({ children }) {
   const router = useRouter();
@@ -19,13 +20,13 @@ function AdminLayout({ children }) {
 
   useEffect(() => {
   if (!user) {
-    router.push('/');
+    router.push(HOME_ROUTE);
     return;
   }
 
   const isAllowed = allowedAdminRoles(user.roles);
   if (!isAllowed) {
-    router.push('/');
+    router.push(HOME_ROUTE);
   }
 }, [user, router]);
 

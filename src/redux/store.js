@@ -22,7 +22,7 @@ const store = configureStore({
           'persist/PAUSE',
           'persist/FLUSH',
           'persist/PURGE',
-          'persist/REGISTER',
+          'persistREGISTER_ROUTE',
         ],
       },
     }),

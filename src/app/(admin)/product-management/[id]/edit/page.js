@@ -1,7 +1,7 @@
 import { getCategories, getPropertyById } from '@/api/properties';
 import BackButton from '@/components/BackButton';
 import PropertyForm from '@/components/properties/Form';
-import Link from 'next/link';
+
 import React from 'react'
 
 async function ProductEditPage({params}) {

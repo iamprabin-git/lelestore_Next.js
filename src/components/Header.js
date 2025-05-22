@@ -12,6 +12,7 @@ import { FaMoon, FaSun } from "react-icons/fa";
 import { toggleTheme } from "@/redux/userPreference/userPreferenceSlice";
 import AuthUser from "./AuthUser";
 import { DARK_THEME } from "@/constants/theme";
+import { HOME_ROUTE, LOGIN_ROUTE, REGISTER_ROUTE } from "@/constants/routes";
 
 function Header() {
   const { user } = useSelector((state) => state.auth);
@@ -34,8 +35,17 @@ function Header() {
       <nav className="bg-white border-gray-200 dark:bg-slate-900 dark:text-white">
         <div className="max-w-screen-xl shadow-lg flex flex-wrap items-center justify-between mx-auto p-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-            <Image src={logo} height={150} width={150} className="h-15 w-auto" alt="Logo" />
+          <Link
+            href={HOME_ROUTE}
+            className="flex items-center space-x-3 rtl:space-x-reverse"
+          >
+            <Image
+              src={logo}
+              height={150}
+              width={150}
+              className="h-15 w-auto"
+              alt="Logo"
+            />
             <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
               Lele Sasto Gharjagga Karobar Kendra
             </span>
@@ -54,13 +64,13 @@ function Header() {
             {!user ? (
               <>
                 <Link
-                  href="/login"
+                  href={LOGIN_ROUTE}
                   className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2"
                 >
                   Login
                 </Link>
                 <Link
-                  href="/register"
+                  href={REGISTER_ROUTE}
                   className="text-blue-700 border border-blue-700 hover:bg-blue-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2"
                 >
                   Sign Up
@@ -79,7 +89,12 @@ function Header() {
               aria-expanded={menuOpen}
             >
               <span className="sr-only">Open main menu</span>
-              <svg className="w-5 h-5" aria-hidden="true" fill="none" viewBox="0 0 17 14">
+              <svg
+                className="w-5 h-5"
+                aria-hidden="true"
+                fill="none"
+                viewBox="0 0 17 14"
+              >
                 <path
                   stroke="currentColor"
                   strokeLinecap="round"
@@ -93,13 +108,17 @@ function Header() {
 
           {/* Nav Links */}
           <div
-            className={`w-full md:flex md:w-auto md:order-1 ${menuOpen ? "block" : "hidden"}`}
+            className={`w-full md:flex md:w-auto md:order-1 ${
+              menuOpen ? "block" : "hidden"
+            }`}
             id="navbar-cta"
           >
             <ul className="flex flex-col space-y-3 md:space-y-0 md:flex-row md:space-x-6 font-medium p-4 md:p-0 mt-4 md:mt-0 border border-gray-100 md:border-0 rounded-lg bg-gray-50 md:bg-white dark:bg-gray-800 md:dark:bg-slate-900 dark:border-gray-700 dark:text-white">
               {navLinks.map(
                 (navLink, i) =>
-                  (user || !navLink.isAuth) && <Navlink navLink={navLink} key={i} />
+                  (user || !navLink.isAuth) && (
+                    <Navlink navLink={navLink} key={i} />
+                  )
               )}
             </ul>
           </div>

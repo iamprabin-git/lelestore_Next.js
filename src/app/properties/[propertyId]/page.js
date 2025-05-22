@@ -8,7 +8,7 @@
 
 //   return <ProductDetail product={product} />;
 // }
-// app/product-management/[propertyId]/page.jsx
+// appPRODUCT_MANAGEMENT_ROUTE/[propertyId]/page.jsx
 import { getPropertyById } from "@/api/properties";
 import ProductDetail from "@/components/properties/PropertyDetails";
 

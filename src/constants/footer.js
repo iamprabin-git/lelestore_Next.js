@@ -1,19 +1,21 @@
+import { ABOUT_ROUTE, AGENT_REGISTRATION_ROUTE, CAREERS_ROUTE, CONTACT_ROUTE } from "./routes";
+
 const footerLinks = [
     {
-        route: "/about",
+        route: ABOUT_ROUTE,
         label: "About Us",
     },
     {
-        route: "/agents/agent-registration",
+        route: AGENT_REGISTRATION_ROUTE,
         label: "Become an Agent ",
     },
     {
-        route: "/careers",
+        route: CAREERS_ROUTE,
         label: "Careeres",
     },
     
     {
-        route: "/contact",
+        route: CONTACT_ROUTE,
         label: "Contact",
     },
 

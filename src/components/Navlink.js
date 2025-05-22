@@ -1,4 +1,5 @@
 "use client";
+import { HOME_ROUTE } from "@/constants/routes";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -9,7 +10,7 @@ function Navlink({ navLink }) {
   const pathname = usePathname();
   const isActive =
     pathname == navLink.route ||
-    (navLink.route !== "/" && pathname.startsWith(navLink.route));
+    (navLink.route !== HOME_ROUTE && pathname.startsWith(navLink.route));
 
   return (
     <li

@@ -1,19 +1,22 @@
 import { login, registerUser } from "@/api/auth";
-import { createAsyncThunk } from"@reduxjs/toolkit";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
-export const loginUser = createAsyncThunk("auth/login", async (data, { rejectWithValue })=>{
+export const loginUser = createAsyncThunk(
+  "authlogin",
+  async (data, { rejectWithValue }) => {
     try {
-        const response = await login(data);
-        localStorage.setItem("authToken", response.data.token);
+      const response = await login(data);
+      localStorage.setItem("authToken", response.data.token);
 
-        return response.data;
+      return response.data;
     } catch (error) {
-       return rejectWithValue(error.response.data);
+      return rejectWithValue(error.response.data);
     }
-});
+  }
+);
 
 export const register = createAsyncThunk(
-  "auth/register",
+  "authregister",
   async (formData, { rejectWithValue }) => {
     try {
       const response = await registerUser(formData);

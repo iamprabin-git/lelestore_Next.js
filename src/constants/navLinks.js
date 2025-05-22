@@ -1,54 +1,56 @@
+import { ABOUT_ROUTE, AGENTS_ROUTE, BUY_ROUTE, COMPANY_ROUTE, CONTACT_ROUTE, HOME_ROUTE, PRICING_ROUTE, PROPERTIES_ROUTE, RENT_ROUTE, SERVICE_ROUTE, TEAM_ROUTE } from "./routes";
+
 const navLinks = [
   {
-    route: "/",
+    route: HOME_ROUTE,
     label: "Home",
     isAuth: false,
   },
   {
-    route: "/properties",
+    route: PROPERTIES_ROUTE,
     label: "Properties",
     isAuth: false,
     submenu: [
       {
-        route: "/buy",
+        route: BUY_ROUTE,
         label: "Buy",
       },
       {
-        route: "/rent",
+        route: RENT_ROUTE,
         label: "Rent",
       },
     ],
   },
   {
-    route: "/agents",
+    route: AGENTS_ROUTE,
     label: "Agents",
     isAuth: true,
   },
  
   {
-    route: "/contact",
+    route: CONTACT_ROUTE,
     label: "Contact",
     isAuth: false,
   },
   {
-    route: "/company",
+    route: COMPANY_ROUTE,
     label: "Company",
     isAuth: false,
     submenu: [
       {
-        route: "/about",
+        route: ABOUT_ROUTE,
         label: "About Us",
       },
       {
-        route: "/team",
+        route: TEAM_ROUTE,
         label: "Our Team",
       },
       {
-        route: "/service",
+        route: SERVICE_ROUTE,
         label: "Our Services",
       },
       {
-        route: "/price",
+        route: PRICING_ROUTE,
         label: "Pricing of Listings",
       },
     ],

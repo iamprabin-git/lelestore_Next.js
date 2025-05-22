@@ -1,5 +1,6 @@
 'use client';
 
+import { HOME_ROUTE, DASHBOARD_ROUTE, PRODUCT_MANAGEMENT_ROUTE, USER_MANAGEMENT_ROUTE} from "@/constants/routes";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AiFillPieChart } from "react-icons/ai";
@@ -9,19 +10,19 @@ import { GrProductHunt } from "react-icons/gr";
 const sidebarMenu = [
   {
     label: "Dashboard",
-    route: "/dashboard",
+    route: DASHBOARD_ROUTE,
     icon: <AiFillPieChart className="w-5 h-5 text-gray-500" />,
   },
 
   {
     label: "Product Management",
-    route: "/product-management",
+    route: PRODUCT_MANAGEMENT_ROUTE,
     icon: <GrProductHunt className="w-5 h-5 text-gray-500" />,
 
   },
     {
     label: "User Management",
-    route: "/user-management",
+    route: USER_MANAGEMENT_ROUTE,
     icon: <FaHouseUser className="w-5 h-5 text-gray-500" />,
   },
 ];
@@ -36,7 +37,7 @@ function AdminSidebar() {
           {sidebarMenu.map((navLink, i) => {
             const isActive =
               pathname === navLink.route ||
-              (navLink.route !== "/" && pathname.startsWith(navLink.route));
+          pathname.startsWith(navLink.route);
 
             return (
               <li key={i}>

@@ -7,6 +7,8 @@ import { toast } from "react-toastify";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { EMAIL_REGEX } from "@/constants/regex"; // Adjust path as needed
 import { registerUser } from "@/api/auth";
+import Link from "next/link";
+import { LOGIN_ROUTE } from "@/constants/routes";
 
 
 function RegisterPage() {
@@ -29,7 +31,7 @@ function RegisterPage() {
     try {
       await registerUser(data);
       toast.success("Registration successful!");
-      router.push("/login");
+      router.push(LOGIN_ROUTE);
     } catch (error) {
       toast.error(error.response?.data || "Registration failed");
     } finally {
@@ -137,9 +139,9 @@ function RegisterPage() {
         {/* Login Link */}
         <div className="text-center mt-4 text-sm">
           Already have an account?{" "}
-          <a href="/login" className="text-blue-600 hover:underline">
+          <Link href={LOGIN_ROUTE} className="text-blue-600 hover:underline">
             Login here
-          </a>
+          </Link>
         </div>
       </form>
     </div>
