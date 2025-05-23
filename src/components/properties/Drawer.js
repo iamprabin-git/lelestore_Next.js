@@ -4,11 +4,14 @@ import { useState } from "react";
 import { IoIosClose } from "react-icons/io";
 
 function PropertyDrawer({ showFilters = true, setShowFilters }) {
-    const [sort, setSort] = useState(JSON.stringify({
-        createdAt: -1,
-    }));
+  const [sort, setSort] = useState(
+    JSON.stringify({
+      createdAt: -1,
+    })
+  );
   const [maxPrice, setMaxPrice] = useState(100000000);
   const [minPrice, setMinPrice] = useState(0);
+  const [brandsFilter, setBrandsFilter] = useState([]);
 
   const router = useRouter();
 
@@ -43,23 +46,25 @@ function PropertyDrawer({ showFilters = true, setShowFilters }) {
         </button>
         <div className="my-4">
           <div>
-            
             <label
               htmlFor="orderBy"
               className="mb-2 text-sm font-medium text-gray-900 uppercase dark:text-white justify-center"
             >
-             order By
+              order By
             </label>
             <select
               id="orderBy"
               onChange={(e) => setSort(e.target.value)}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             >
-        
               <option value={JSON.stringify({ createdAt: -1 })}>Latest</option>
               <option value={JSON.stringify({ createdAt: +1 })}>Oldest</option>
-              <option value={JSON.stringify({ price: -1 })}>Price: High to Low</option>
-              <option value={JSON.stringify({ price: +1 })}>Peice: Low to High</option>
+              <option value={JSON.stringify({ price: -1 })}>
+                Price: High to Low
+              </option>
+              <option value={JSON.stringify({ price: +1 })}>
+                Peice: Low to High
+              </option>
             </select>
           </div>
         </div>
@@ -98,6 +103,41 @@ function PropertyDrawer({ showFilters = true, setShowFilters }) {
               min={0}
               onChange={(e) => setMaxPrice(e.target.value)}
             />
+          </div>
+        </div>
+        <div>
+          <h5 className="mb-2 text-sm font-medium text-gray-900 dark:text-white justify-center">
+            Brands Filter
+          </h5>
+          <div className="flex items-center mb-4">
+            <input
+              disabled
+              id="disabled-checkbox"
+              type="checkbox"
+              defaultValue
+              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+            />
+            <label
+              htmlFor="disabled-checkbox"
+              className="ms-2 text-sm font-medium text-gray-400 dark:text-gray-500"
+            >
+              Disabled checkbox
+            </label>
+          </div>
+          <div className="flex items-center mb-4">
+            <input
+              disabled
+              id="disabled-checkbox"
+              type="checkbox"
+              defaultValue
+              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+            />
+            <label
+              htmlFor="disabled-checkbox"
+              className="ms-2 text-sm font-medium text-gray-400 dark:text-gray-500"
+            >
+              Disabled checkbox
+            </label>
           </div>
         </div>
         <button

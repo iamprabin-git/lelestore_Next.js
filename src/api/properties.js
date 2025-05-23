@@ -24,6 +24,10 @@ async function getCategories() {
     return await axios.get(`${config.apiUrl}/api/products/categories`);
 }
 
+async function getBrands() {
+    return await axios.get(`${config.apiUrl}/api/products/brands`);
+}
+
 async function updateProperty(id, data) {
     return await api.put(`/api/products/${id}`, data);
 }
