@@ -48,4 +48,5 @@ export {
     createProperty,
     updateProperty,
     deleteProperty,
+    getBrands,
 };
