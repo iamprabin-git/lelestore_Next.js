@@ -1,6 +1,6 @@
 import React from 'react'
 import ProductCard from '@/components/properties/Card';
-import { getProperties } from '@/api/properties';
+import { getBrands, getProperties } from '@/api/properties';
 import PropertyDrawer from '@/components/properties/Drawer';
 import PropertyFilters from '@/components/properties/Filters';
 

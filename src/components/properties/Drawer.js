@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { IoIosClose } from "react-icons/io";
 
-function PropertyDrawer({ showFilters = true, setShowFilters }) {
+function PropertyDrawer({ showFilters = true, setShowFilters, brands }) {
   const [sort, setSort] = useState(
     JSON.stringify({
       createdAt: -1,
