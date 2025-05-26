@@ -1,6 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoIosClose } from "react-icons/io";
 
 function PropertyDrawer({ showFilters = true, setShowFilters, brands }) {
@@ -15,14 +15,27 @@ function PropertyDrawer({ showFilters = true, setShowFilters, brands }) {
 
   const router = useRouter();
 
+  function handleBrandsFilterChange(brand) {
+    setBrandsFilter((prevBrands) => 
+      prevBrands.includes(brand)
+        ? prevBrands.filter((b) => b !== brand)
+        : [...prevBrands, brand]
+    );
+    }
+
   function setFilters() {
     const params = new URLSearchParams();
     params.set("min", minPrice);
     params.set("max", maxPrice);
     params.set("sort", sort);
+    params.set("brands", brandsFilter.join(","));
     router.push(`?${params.toString()}`);
     setShowFilters(false);
   }
+
+  useEffect(() => {
+    console.log(brandsFilter);
+  }, [brandsFilter]);
   return (
     <div
       className={`h-svh w-full bg-[#0000002d] fixed top-0 left-0 z-10 ${
@@ -109,33 +122,21 @@ function PropertyDrawer({ showFilters = true, setShowFilters, brands }) {
           <h5 className="mb-2 text-sm font-medium text-gray-900 dark:text-white justify-center">
             Brands Filter
           </h5>
-          <div className="flex items-center mb-4">
-            <input
-             type="checkbox"
-             className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-            />
-            <label
-              htmlFor="disabled-checkbox"
-              className="ms-2 text-sm font-medium text-gray-400 dark:text-gray-500"
-            >
-              Samsung
-            </label>
-          </div>
-          <div className="flex items-center mb-4">
-            <input
-              disabled
-              id="disabled-checkbox"
-              type="checkbox"
-              defaultValue
-              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-            />
-            <label
-              htmlFor="disabled-checkbox"
-              className="ms-2 text-sm font-medium text-gray-400 dark:text-gray-500"
-            >
-              Apple
-            </label>
-          </div>
+          {brands?.map((brand, index) => (
+            <div key={index} className="flex items-center mb-2">
+              <input
+              id={brand}
+                type="checkbox"
+                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" onClick={() => handleBrandsFilterChange(brand)}
+              />
+              <label
+                htmlFor={brand}
+                className="ms-2 text-sm font-medium text-gray-400 dark:text-gray-500"
+              >
+                {brand}
+              </label>
+            </div>
+          ))}
         </div>
         <button
           onClick={setFilters}
