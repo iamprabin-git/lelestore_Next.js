@@ -1,6 +1,6 @@
 "use client";
 import { PROPERTIES_ROUTE } from "@/constants/routes";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { IoIosClose } from "react-icons/io";
 
@@ -21,6 +21,7 @@ function PropertyDrawer({
   const [categoryFilter, setCategoryFilter] = useState([]);
 
   const router = useRouter();
+  const searchParams=useSearchParams();
 
   function handleBrandsFilterChange(brand) {
     setBrandsFilter((prevBrands) =>
