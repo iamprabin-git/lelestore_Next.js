@@ -1,6 +1,6 @@
-import { getCategories } from "@/api/properties";
+import { getCategories } from "@/api/products";
 import BackButton from "@/components/BackButton";
-import PropertyForm from "@/components/properties/Form";
+import PropertyForm from "@/components/products/Form";
 import React from "react";
 
 async function ProductAddPage() {

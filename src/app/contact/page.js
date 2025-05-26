@@ -130,20 +130,13 @@ function ContactPage() {
       <FaPhoneAlt className="text-green-500" />
       <span><strong>Phone 1:</strong> +977-9765726294 (Prabin Dangol)</span>
     </p>
-    <p className="flex items-center gap-2">
-      <FaPhoneAlt className="text-green-500" />
-      <span><strong>Phone 2:</strong> +977-9849150004 (Sujan Bhandari)</span>
-    </p>
-    <p className="flex items-center gap-2">
-      <FaPhoneAlt className="text-green-500" />
-      <span><strong>Phone 3:</strong> +977-9818366209 (Manoj Nagarkoti) </span>
-    </p>
+    
   </div>
 
   <div className="text-gray-700 dark:text-gray-300">
     <p className="flex items-center gap-2">
       <FaEnvelope className="text-blue-500" />
-      <span><strong>Email:</strong> info.lelesastogharjaggakarobar@gmail.com</span>
+      <span><strong>Email:</strong> info.lelestore@gmail.com</span>
     </p>
   </div>
 </div>

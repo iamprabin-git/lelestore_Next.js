@@ -1,16 +1,16 @@
 import React from "react";
-import ProductCard from "@/components/properties/Card";
-import { getBrands, getCategories, getProperties } from "@/api/properties";
-import PropertyDrawer from "@/components/properties/Drawer";
-import PropertyFilters from "@/components/properties/Filters";
-import SearchProperty from "@/components/properties/Search";
+import ProductCard from "@/components/products/Card";
+import { getBrands, getCategories, getProducts } from "@/api/products";
+import PropertyDrawer from "@/components/products/Drawer";
+import PropertyFilters from "@/components/products/Filters";
+import SearchProperty from "@/components/products/Search";
 
 export const metadata = {
-  title: "Properties",
+  title: "Products",
 };
 
-async function PropertiesPage({ searchParams }) {
-  const response = await getProperties(await searchParams);
+async function ProductsPage({ searchParams }) {
+  const response = await getProducts(await searchParams);
   const brandsResponse = await getBrands();
   const categoriesResponse = await getCategories();
 
@@ -22,7 +22,7 @@ async function PropertiesPage({ searchParams }) {
     <section className="container mx-auto px-4">
       <div className=" grid grid-cols-[1fr_auto_auto] items-center gap-3">
         <h1 className="text-3xl font-bold underline pt-6 justify-between">
-          Popular Properties
+          Popular Products
         </h1>
         <SearchProperty />
         <PropertyFilters brands={brands} categories={categories} />
@@ -40,4 +40,4 @@ async function PropertiesPage({ searchParams }) {
   );
 }
 
-export default PropertiesPage;
+export default ProductsPage;

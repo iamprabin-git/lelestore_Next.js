@@ -6,14 +6,14 @@ import Link from 'next/link';
 function ProductCard({product}) {
   return (
     <div className='w-full h-max rounded-2xl shadow-blue-600 dark:shadow dark:shadow-amber-50 px-5 py-4 border border-b-amber-950 '>
-       <Link href={`/properties/${product.id}`}>
+       <Link href={`/products/${product.id}`}>
        <div className='flex justify-center'>
         <Image src={product.imageUrls[0] ?? card} alt='image' height={500} width={500} className='max-h-40 w-auto'/>
         </div>
         </Link>
     
        <div className='py-3 '>
-      <Link href={`/properties/${product.id}`}>
+      <Link href={`/products/${product.id}`}>
         <h2 className='text-2xl font-semibold justify-center'>{product.name}</h2>
        
         </Link>

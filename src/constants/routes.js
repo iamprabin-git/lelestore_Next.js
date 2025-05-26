@@ -6,9 +6,9 @@ export const DASHBOARD_ROUTE = "/dashboard";
 export const HOME_ROUTE = "/";
 export const PRODUCT_ADD_ROUTE = "/product-management/add";
 export const PRODUCT_EDIT_ROUTE = "/product-management/:id/edit";
-export const AGENTS_ROUTE = "/agents";
+export const NEWS_ROUTE = "/news";
 export const AGENT_REGISTRATION_ROUTE = "/agents/agent-registration";
-export const PROPERTIES_ROUTE = "/properties";
+export const PRODUCTS_ROUTE = "/products";
 export const BUY_ROUTE = "/buy";
 export const RENT_ROUTE = "/rent";
 export const LAND_ROUTE = "/land";
@@ -30,4 +30,5 @@ export const AGENT_OF_MONTH_EDIT_ROUTE = "/agentOfMonth/:id/edit";
 export const COMPANY_ROUTE = "/company";
 export const TEAM_ROUTE = "/team";
 export const SERVICE_ROUTE = "/service";
+export const CART_ROUTE = "/cart";
 

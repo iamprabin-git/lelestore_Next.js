@@ -1,4 +1,4 @@
-import { ABOUT_ROUTE, AGENTS_ROUTE, BUY_ROUTE, COMPANY_ROUTE, CONTACT_ROUTE, HOME_ROUTE, PRICING_ROUTE, PROPERTIES_ROUTE, RENT_ROUTE, SERVICE_ROUTE, TEAM_ROUTE } from "./routes";
+import { ABOUT_ROUTE, NEWS_ROUTE,  CART_ROUTE, COMPANY_ROUTE, CONTACT_ROUTE, HOME_ROUTE, PRICING_ROUTE, PRODUCTS_ROUTE,  SERVICE_ROUTE, TEAM_ROUTE } from "./routes";
 
 const navLinks = [
   {
@@ -7,30 +7,26 @@ const navLinks = [
     isAuth: false,
   },
   {
-    route: PROPERTIES_ROUTE,
-    label: "Properties",
+    route: PRODUCTS_ROUTE,
+    label: "Products",
     isAuth: false,
-    submenu: [
-      {
-        route: BUY_ROUTE,
-        label: "Buy",
-      },
-      {
-        route: RENT_ROUTE,
-        label: "Rent",
-      },
-    ],
+    
   },
-  {
-    route: AGENTS_ROUTE,
-    label: "Agents",
-    isAuth: true,
-  },
+{
+  route: NEWS_ROUTE,
+  label: "News",
+  isAuth: false,
+},
  
   {
     route: CONTACT_ROUTE,
     label: "Contact",
     isAuth: false,
+  },
+  {
+    route: CART_ROUTE,
+    label: "Cart",
+    isAuth: true,
   },
   {
     route: COMPANY_ROUTE,

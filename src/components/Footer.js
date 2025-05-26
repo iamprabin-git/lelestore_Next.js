@@ -21,10 +21,10 @@ function Footer() {
             height={150}
             width={150} 
             className="h-15 w-auto" alt=" Logo" />
-            <h1>Lele Sasto Gharjagga Karobar Kendra</h1>
+            <h1>Lele Store</h1>
             </div>
        
-          <h4 className="mb-6 text-sm font-medium text-gray-900 dark:text-white">Welcome to Lele Sasto Gharjagga Karobar Kendra, your premier destination for all things real estate in the heart of Lalitpur. Whether you're looking to buy, sell, or rent property, our company offers a seamless, user-friendly experience that connects buyers directly with sellers, ensuring a transparent and efficient transaction process. Lele Sasto Gharjagga Karobar Kendra is a renowned and leading real estate brokerage agency in lele, Lalitpur we give you the best deals possible.</h4>
+          <h4 className="mb-6 text-sm font-medium text-gray-900 dark:text-white">Welcome to Lele Store</h4>
           <ul className="text-gray-500 dark:text-gray-400 font-medium">
           <SocialIcons/>
           </ul>
@@ -39,22 +39,11 @@ function Footer() {
                 </li>
               ))
             }
-            {/* <li className="mb-4">
-              <a href="#" className=" hover:underline">About</a>
-            </li>
-            <li className="mb-4">
-              <a href="#" className="hover:underline">Careers</a>
-            </li>
-            <li className="mb-4">
-              <a href="#" className="hover:underline">Brand Center</a>
-            </li>
-            <li className="mb-4">
-              <a href="#" className="hover:underline">Blog</a>
-            </li> */}
+           
           </ul>
         </div>
         <div>
-          <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Browse porperties</h2>
+          <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Browse Products</h2>
           <ul className="text-gray-500 dark:text-gray-400 font-medium">
            {
             BrowseLinks.map((BrowseLink, browseindex) => (
@@ -63,15 +52,7 @@ function Footer() {
               </li>
             ))
            }
-            {/* <li className="mb-4">
-              <a href="#" className="hover:underline">Twitter</a>
-            </li>
-            <li className="mb-4">
-              <a href="#" className="hover:underline">Facebook</a>
-            </li>
-            <li className="mb-4">
-              <a href="#" className="hover:underline">Contact Us</a>
-            </li> */}
+            
           </ul>
         </div>
        
@@ -89,7 +70,7 @@ function Footer() {
         </div>
       </div>
       <div className="px-4 py-6 bg-gray-100 dark:bg-gray-700 md:flex md:items-center md:justify-between">
-        <span className="text-sm text-gray-500 dark:text-gray-300 sm:text-center">© 2025 <Link href="https://flowbite.com/">Lele Sasto Gharjagga Karobar Kendra™</Link>. All Rights Reserved.
+        <span className="text-sm text-gray-500 dark:text-gray-300 sm:text-center">© 2025 <Link href="https://flowbite.com/">Lele Store™</Link>. All Rights Reserved.
         </span>
         <div className="flex mt-4 sm:justify-center md:mt-0 space-x-5 rtl:space-x-reverse">
          <Link href="https://dangolprabin.com.np">Designed by Prabin Dangol</Link>

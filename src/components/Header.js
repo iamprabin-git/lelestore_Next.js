@@ -47,7 +47,7 @@ function Header() {
               alt="Logo"
             />
             <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-              Lele Sasto Gharjagga Karobar Kendra
+              Lele Store
             </span>
           </Link>
 

@@ -3,20 +3,20 @@ import axios from 'axios';
 import api from './api';
 import getFormatedParams from '@/helpers/formatSearchParams';
 
- async function createProperty(data) {
+ async function createProduct(data) {
   return await api.post('/api/products', data
   );
 }
-async function getProperties(searchParams) {
+async function getProducts(searchParams) {
    const query = getFormatedParams(searchParams);
     return await axios.get(`${config.apiUrl}/api/products?${query}`);
 }
 
-async function getPropertyByUser() {
+async function getProductByUser() {
     return await api.get(`/api/products/users`);
 }
 
-async function getPropertyById(id) {
+async function getProductById(id) {
     return await axios.get(`${config.apiUrl}/api/products/${id}`);
 }
 
@@ -28,11 +28,11 @@ async function getBrands() {
     return await axios.get(`${config.apiUrl}/api/products/brands`);
 }
 
-async function updateProperty(id, data) {
+async function updateProduct(id, data) {
     return await api.put(`/api/products/${id}`, data);
 }
 
-async function deleteProperty(id) {
+async function deleteProduct(id) {
     return await api.delete(`/api/products/${id}`);
 }
 
@@ -41,12 +41,12 @@ async function deleteProperty(id) {
 
 
 export {
-    getProperties,
-    getPropertyById,
-    getPropertyByUser,
+    getProducts,
+    getProductById,
+    getProductByUser,
     getCategories,
-    createProperty,
-    updateProperty,
-    deleteProperty,
+    createProduct,
+    updateProduct,
+    deleteProduct,
     getBrands,
 };

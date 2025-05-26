@@ -1,14 +1,14 @@
 import { IoAlertCircleSharp } from "react-icons/io5";
 import { IoIosClose } from "react-icons/io";
 import { set } from "react-hook-form";
-import { deleteProperty } from "@/api/properties";
+import { deleteProduct } from "@/api/products";
 import { toast } from "react-toastify";
 import Spinner from "./Spinner";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setDeleted } from "@/redux/product/productSlice";
 
-function DeletePropertyModal({
+function DeleteProductModal({
   showModal = false,
   setShowModal,
   product,
@@ -19,7 +19,7 @@ function DeletePropertyModal({
   const dispatch = useDispatch();
   function confirmDelete() {
     setLoading(true);
-    deleteProperty(product?.id)
+    deleteProduct(product?.id)
       .then(() =>{
         toast.success("Product deleted successfully!", { autoClose: 750 });
       dispatch(setDeleted("success"));
@@ -83,4 +83,4 @@ function DeletePropertyModal({
   );
 }
 
-export default DeletePropertyModal;
+export default DeleteProductModal;

@@ -1,6 +1,6 @@
 "use client";
-import { getPropertyByUser } from '@/api/properties';
-import ProductTable from '@/components/properties/Table';
+import { getProductByUser } from '@/api/products';
+import ProductTable from '@/components/products/Table';
 import { setDeleted } from '@/redux/product/productSlice';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
@@ -16,7 +16,7 @@ function ProductManagementPage() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    getPropertyByUser()
+    getProductByUser()
       .then(response => setProducts(response?.data))
       .catch(error => toast.error(error.response?.data))
       .finally(() => setLoading(false));dispatch(setDeleted(null));

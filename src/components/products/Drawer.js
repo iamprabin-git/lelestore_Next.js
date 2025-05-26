@@ -1,10 +1,10 @@
 "use client";
-import { PROPERTIES_ROUTE } from "@/constants/routes";
+import { PRODUCTS_ROUTE } from "@/constants/routes";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { IoIosClose } from "react-icons/io";
 
-function PropertyDrawer({
+function ProductDrawer({
   showFilters = true,
   setShowFilters,
   brands,
@@ -42,7 +42,7 @@ function PropertyDrawer({
     setShowFilters(false);
   }
    function resetFilters() {
-    router.push(PROPERTIES_ROUTE);
+    router.push(PRODUCTS_ROUTE);
     setShowFilters(false);
   }
 
@@ -194,4 +194,4 @@ function PropertyDrawer({
     </div>
   );
 }
-export default PropertyDrawer;
+export default ProductDrawer;

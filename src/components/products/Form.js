@@ -1,9 +1,9 @@
 "use client";
 import {
-  createProperty,
+  createProduct,
   getCategories,
-  updateProperty,
-} from "@/api/properties";
+  updateProduct,
+} from "@/api/products";
 import React, { useState } from "react";
 import { set, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
@@ -11,7 +11,7 @@ import Spinner from "./Spinner";
 import { IoCloudUploadOutline } from "react-icons/io5";
 import Image from "next/image";
 
-function PropertyForm({ id, product, categories }) {
+function ProductForm({ id, product, categories }) {
   const [loading, setLoading] = useState(false);
   const [localImageUrls, setLocalImageUrls] = useState([]);
   const [productImages, setProductImages] = useState([]);
@@ -44,11 +44,11 @@ function PropertyForm({ id, product, categories }) {
 
     try {
       if (product) {
-        await updateProperty(id, formData);
+        await updateProduct(id, formData);
         toast.success("Product updated successfully!", { autoClose: 750 });
         return;
       }
-      await createProperty(formData);
+      await createProduct(formData);
       reset();
       toast.success("Product created successfully!", { autoClose: 750 });
       // Clear form if needed
@@ -225,4 +225,4 @@ function PropertyForm({ id, product, categories }) {
   );
 }
 
-export default PropertyForm;
+export default ProductForm;
