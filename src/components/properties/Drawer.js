@@ -1,4 +1,5 @@
 "use client";
+import { PROPERTIES_ROUTE } from "@/constants/routes";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { IoIosClose } from "react-icons/io";
@@ -39,6 +40,10 @@ function PropertyDrawer({
     router.push(`?${params.toString()}`);
     setShowFilters(false);
   }
+   function resetFilters() {
+    router.push(PROPERTIES_ROUTE);
+    setShowFilters(false);
+  }
 
   useEffect(() => {
     console.log(brandsFilter);
@@ -50,7 +55,7 @@ function PropertyDrawer({
       }`}
     >
       <div
-        className={`fixed top-20 left-0 z-50 w-64 h-screen py-14 px-5 overflow-y-auto transition-transform translate-x-0 bg-white dark:bg-gray-800 ${
+        className={`fixed top-20 left-0 z-50 w-72 h-screen pt-8 px-5 pb-20 overflow-y-auto transition-transform translate-x-0 bg-white dark:bg-gray-800 ${
           showFilters ? "translate-x-0" : "-translate-x-64"
         }`}
       >
@@ -140,11 +145,8 @@ function PropertyDrawer({
             >
               <option value="">Select Category</option>
               {categories?.map((category) => (
-                <option
-                  key={category}
-                  value={category}
-                >
-                 {category}
+                <option key={category} value={category}>
+                  {category}
                 </option>
               ))}
             </select>
@@ -172,12 +174,21 @@ function PropertyDrawer({
             </div>
           ))}
         </div>
-        <button
-          onClick={setFilters}
-          className="px-2 py-2 bg-slate-900 text-white items-center border rounded-lg hover:opacity-80 dark:bg-amber-100"
-        >
-          Apply Filter
-        </button>
+        <div className="flex items-center justify-between gap-1">
+          <button
+            onClick={setFilters}
+            className="px-2 py-2 bg-slate-900 text-white items-center border rounded-lg hover:opacity-80 dark:bg-amber-100"
+          >
+            Apply Filter
+          </button>
+
+          <button
+            onClick={resetFilters}
+            className="px-2 py-2 bg-red-800 text-white items-center border rounded-lg hover:opacity-80 dark:bg-amber-100"
+          >
+            Reset Filter
+          </button>
+        </div>
       </div>
     </div>
   );
