@@ -2,13 +2,14 @@
 import React, { useState } from 'react'
 import PropertyDrawer from './Drawer';
 
-function PropertyFilters({brands}) {
+function PropertyFilters({brands, categories}) {
     const [showFilters, setShowFilters] = useState(false);
   return (
     <div className='container '>
         <button onClick={() => setShowFilters(!showFilters)} className='bg-slate-600 text-white items-center border rounded-lg px-3 py-1 hover:bg-slate-100 hover:text-black'>Filters</button>
         <PropertyDrawer 
         brands={brands}
+        categories={categories}
         showFilters={showFilters} setShowFilters={setShowFilters}/>   
     </div>
   )

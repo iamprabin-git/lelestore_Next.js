@@ -3,7 +3,12 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { IoIosClose } from "react-icons/io";
 
-function PropertyDrawer({ showFilters = true, setShowFilters, brands }) {
+function PropertyDrawer({
+  showFilters = true,
+  setShowFilters,
+  brands,
+  categories,
+}) {
   const [sort, setSort] = useState(
     JSON.stringify({
       createdAt: -1,
@@ -12,16 +17,17 @@ function PropertyDrawer({ showFilters = true, setShowFilters, brands }) {
   const [maxPrice, setMaxPrice] = useState(100000000);
   const [minPrice, setMinPrice] = useState(0);
   const [brandsFilter, setBrandsFilter] = useState([]);
+  const [categoryFilter, setCategoryFilter] = useState([]);
 
   const router = useRouter();
 
   function handleBrandsFilterChange(brand) {
-    setBrandsFilter((prevBrands) => 
+    setBrandsFilter((prevBrands) =>
       prevBrands.includes(brand)
         ? prevBrands.filter((b) => b !== brand)
         : [...prevBrands, brand]
     );
-    }
+  }
 
   function setFilters() {
     const params = new URLSearchParams();
@@ -29,6 +35,7 @@ function PropertyDrawer({ showFilters = true, setShowFilters, brands }) {
     params.set("max", maxPrice);
     params.set("sort", sort);
     params.set("brands", brandsFilter.join(","));
+    params.set("category", categoryFilter);
     router.push(`?${params.toString()}`);
     setShowFilters(false);
   }
@@ -118,6 +125,31 @@ function PropertyDrawer({ showFilters = true, setShowFilters, brands }) {
             />
           </div>
         </div>
+        <div className="my-4">
+          <div>
+            <label
+              htmlFor="orderBy"
+              className="text-sm font-medium text-gray-900 uppercase dark:text-white justify-center"
+            >
+              Category
+            </label>
+            <select
+              id="category"
+              onChange={(e) => setCategoryFilter(e.target.value)}
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            >
+              <option value="">Select Category</option>
+              {categories?.map((category) => (
+                <option
+                  key={category}
+                  value={category}
+                >
+                 {category}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
         <div>
           <h5 className="mb-2 text-sm font-medium text-gray-900 dark:text-white justify-center">
             Brands Filter
@@ -125,9 +157,11 @@ function PropertyDrawer({ showFilters = true, setShowFilters, brands }) {
           {brands?.map((brand, index) => (
             <div key={index} className="flex items-center mb-2">
               <input
-              id={brand}
+                id={brand}
                 type="checkbox"
-                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" onClick={() => handleBrandsFilterChange(brand)}
+                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                checked={brandsFilter.includes(brand)}
+                onChange={() => handleBrandsFilterChange(brand)}
               />
               <label
                 htmlFor={brand}

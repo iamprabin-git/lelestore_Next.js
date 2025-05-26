@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { RiLogoutBoxRLine } from 'react-icons/ri';
 import { useDispatch } from 'react-redux';
 
-function AuthUserPopup({user}) {
+function AuthUserPopup({user, setShowpopup}) {
     const dispatch = useDispatch();
     const isAllowed = allowedAdminRoles(user?.roles);
 

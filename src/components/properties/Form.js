@@ -1,5 +1,9 @@
 "use client";
-import { createProperty, getCategories, updateProperty } from "@/api/properties";
+import {
+  createProperty,
+  getCategories,
+  updateProperty,
+} from "@/api/properties";
 import React, { useState } from "react";
 import { set, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
@@ -7,7 +11,7 @@ import Spinner from "./Spinner";
 import { IoCloudUploadOutline } from "react-icons/io5";
 import Image from "next/image";
 
-function PropertyForm({id, product, categories }) {
+function PropertyForm({ id, product, categories }) {
   const [loading, setLoading] = useState(false);
   const [localImageUrls, setLocalImageUrls] = useState([]);
   const [productImages, setProductImages] = useState([]);
@@ -15,28 +19,29 @@ function PropertyForm({id, product, categories }) {
     values: product,
   });
 
-  function prepareData(data){
-    
+  function prepareData(data) {
     const formData = new FormData();
     formData.append("name", data.name);
     formData.append("brand", data.brand);
     formData.append("price", data.price);
     formData.append("category", data.category);
-    if(data.description) formData.append("description", data.description);
-    
-    productImages.map(image=>{
+    if (data.description) {
+      formData.append("description", data.description);
+    }
+    if (productImages.length > 0) {
+       productImages.map((image) => {
       formData.append("images", image);
-    });   
+    });
+    }
+   
 
     return formData;
   }
 
-
-
   async function submitForm(data) {
     setLoading(true);
     const formData = prepareData(data);
-    
+
     try {
       if (product) {
         await updateProperty(id, formData);
@@ -44,7 +49,7 @@ function PropertyForm({id, product, categories }) {
         return;
       }
       await createProperty(formData);
-       reset();
+      reset();
       toast.success("Product created successfully!", { autoClose: 750 });
       // Clear form if needed
     } catch (error) {
@@ -156,25 +161,32 @@ function PropertyForm({id, product, categories }) {
           >
             <div className="flex flex-col items-center justify-center pt-5 pb-6">
               <IoCloudUploadOutline className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" />
-          
+
               <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
                 <span className="font-semibold">Click to upload</span> or drag
                 and drop
               </p>
               <p className="text-xs text-gray-500 dark:text-gray-400">
-                SVG, PNG, JPG 
+                SVG, PNG, JPG
               </p>
             </div>
-            <input id="images" type="file" className="hidden" multiple accept=".png, .jpg, .jpeg .svg" onChange={(e)=>{
-              const files = [];
-              const Urls = [];
-               Array.from(e.target.files).map((file) =>{
-                 files.push(file);
-                 Urls.push(URL.createObjectURL(file));
-               });
-              setLocalImageUrls(Urls);
-              setProductImages(files);
-            }} />
+            <input
+              id="images"
+              type="file"
+              className="hidden"
+              multiple
+              accept=".png, .jpg, .jpeg .svg"
+              onChange={(e) => {
+                const files = [];
+                const Urls = [];
+                Array.from(e.target.files).map((file) => {
+                  files.push(file);
+                  Urls.push(URL.createObjectURL(file));
+                });
+                setLocalImageUrls(Urls);
+                setProductImages(files);
+              }}
+            />
           </label>
           {localImageUrls.length > 0 && (
             <div className="flex flex-wrap gap-5 mt-4">
