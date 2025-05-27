@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import logo from "../assets/images/logo-3.png";
+import logo from "../assets/images/Logoz.png";
 import Link from "next/link";
 import navLinks from "@/constants/navLinks";
 import Navlink from "./Navlink";

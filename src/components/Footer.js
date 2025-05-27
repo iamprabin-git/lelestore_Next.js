@@ -1,6 +1,6 @@
 "use client"
 import Image from 'next/image'
-import logo from '../assets/images/logo-3.png'
+import logo from '../assets/images/Logoz.png'
 import BrowseLinks from '@/constants/browse'
 import footerLinks from '@/constants/footer'
 import UsefulLinks from '@/constants/usefulLinks'
